@@ -1,0 +1,26 @@
+
+<h1>WelCome to Hacker News Top Stories</h1>
+<p *ngIf="!hackerNewsStories"><em>Loading...</em></p>
+<div class="news-feed">
+  <div class="search-container">
+    <h3>Search Story:<input type="text" placeholder="Search" (keyup)="search($event)"></h3>
+  </div>
+  <div *ngFor="let story of hackerNewsStories" class="feed-item">
+    <h3>
+      {{ story.title }}
+      <ng-container *ngIf="story.url">
+        <a href="{{ story.url }}" target="_blank">Read More</a>
+      </ng-container>
+      <ng-container *ngIf="!story.url">
+        <p>No hyperlink available for this story.</p>
+      </ng-container>
+    </h3>
+
+    <p>by {{ story.by }}</p>
+  </div>
+</div>
+<div class="pagination">
+  <button [disabled]="pageNumber === 1" (click)="onPageChange(pageNumber - 1)">Previous</button>
+  <span>Page {{ pageNumber }}</span>
+  <button [disabled]="hackerNewsStories.length < pageSize" (click)="onPageChange(pageNumber + 1)">Next</button>
+</div>

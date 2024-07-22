@@ -1,0 +1,19 @@
+<p>home works!</p>
+<!-- dummy-table.component.html -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of employeeList" [ngStyle]="{ 'background-color': row.id % 2 === 0?'yellow':'red'}">
+      <td>{{ row.id }}</td>
+      <td>{{ row.name }}</td>
+      <td>{{ row.age }}</td>
+    </tr>
+  </tbody>
+</table>
+
